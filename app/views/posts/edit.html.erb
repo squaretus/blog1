@@ -1,0 +1,31 @@
+<h2>Редактировать</h2>
+<%= form_for :post, url: post_path(@post), method: :patch do |f| %>
+  <% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |msg| %>
+      <div class="alert alert-warning"><%= msg %></div>
+    <% end %>
+  <% end %>
+  <p>
+    Заголовок<br>
+    <%= f.text_field(:title, {:class => 'form-control'}) %>
+  </p>
+
+  <p>
+    Содержание <br>
+    <%= f.text_area(:boddy, {:class => 'form-control'}) %>
+  </p>
+
+  <div>
+    <h4><%= f.label 'Картинка' %> <br></h4>
+    <%= f.file_field :pictures, multiple: true %>
+  </div>
+<br>
+  <p>
+    <%= f.submit"Сохранить", :class => 'btn btn-success' %>
+
+  </p>
+
+  <p>
+      <%= link_to "Отмена", post_path, :class => 'btn btn-danger' %>
+  </p>
+<% end %>

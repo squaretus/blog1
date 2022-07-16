@@ -1,0 +1,10 @@
+<h1><center>Мои записи</center></h1>
+<hr>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <hr>
+
+  <% end %>
+</div>
