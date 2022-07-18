@@ -1,10 +1,10 @@
 ActiveAdmin.register Post do
-  permit_params :title, :boddy, :pictures, :user_id
+  permit_params :title, :body, :pictures, :user_id
 
   show do
     attributes_table do
       row :title
-      row :boddy
+      row :body
       row :user
       row :created_at
 
@@ -17,12 +17,12 @@ end
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :boddy
+  # permit_params :title, :body
   #
   # or
   #
   # permit_params do
-  #   permitted = [:title, :boddy]
+  #   permitted = [:title, :body]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
