@@ -1,3 +1,6 @@
+# Модель пользователя с гемом devise
+# Имеет много постов и комментариев
+
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable

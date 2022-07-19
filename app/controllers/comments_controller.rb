@@ -1,3 +1,5 @@
+# Контроллер модели комментариев
+
 class CommentsController < ApplicationController
   load_resource :post
   load_resource :comment, through: :post

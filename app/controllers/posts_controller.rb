@@ -1,3 +1,5 @@
+# Контроллер модели поста
+
 class PostsController < ApplicationController
   load_and_authorize_resource
   
