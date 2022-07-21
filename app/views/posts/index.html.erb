@@ -3,7 +3,7 @@
   <br />
   <nav class="my-2 my-md-0 mr-md-3">
     <span><%= link_to "Список постов", home_path, :class => "btn btn-secondary" %></span>
-    <% if user_signed_in? %>
+    <% if can? :create, @post %>
       <span><%= link_to "Новый пост", new_post_path, :class => "btn btn-secondary" %> </span><br>
       <br />
     <% end %>

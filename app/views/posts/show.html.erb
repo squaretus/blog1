@@ -1,7 +1,7 @@
 <%= render @post %>
 
 <div>
-  <% if user_signed_in? %>
+  <% if can? :update, @post %>
     <% if can? :update, @post %>
       <%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %><br>
     <% end %>
