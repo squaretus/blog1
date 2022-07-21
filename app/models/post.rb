@@ -8,6 +8,6 @@ class Post < ApplicationRecord
 
   has_many_attached :pictures, dependent: :destroy
 
-  validates :title, presence: true, length: {minimum: 3}
-  validates :body, presence: true, length: {minimum: 10}
+  validates :title, presence: true, length: { minimum: 3 }
+  validates :body, presence: true, length: { minimum: 10 }
 end

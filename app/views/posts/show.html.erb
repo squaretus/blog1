@@ -1,70 +1,43 @@
 <%= render @post %>
 
-<div>
-  <% if can? :update, @post %>
+  <div>
     <% if can? :update, @post %>
-      <%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %><br>
-    <% end %>
-    <br />
-    <% if can? :destroy, @post %>
-      <%= button_to "Удалить пост", @post, method: :delete, :class => 'btn btn-danger' %>
-    <% end %>
-  <% end %>
-</div>
-<br>
-<div>
-  <%= link_to "Назад ко всем постам", posts_path, :class => 'btn btn-secondary' %><br>
-</div>
-
-<br>
-
-<div class="alert alert-info">
-<h4><center>Все комментарии<center></h4>
-</div>
-<hr>
-
-<div>
-  <% @post.comments.each do |comment| %>
-    <p class="alert alert-info"><strong>
-      <% if comment.user_id? %>
-      <%= comment.user.email %>
-      <% else %>
-      <%= comment.username %>
+      <% if can? :update, @post %>
+        <%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %><br>
       <% end %>
-      :</strong>
-    <%= comment.body %>
-  <% end %>
-</p>
+      <br />
+      <% if can? :destroy, @post %>
+        <%= button_to "Удалить пост", @post, method: :delete, :class => 'btn btn-danger' %>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+  <div>
+    <%= link_to "Назад ко всем постам", posts_path, :class => 'btn btn-secondary' %><br>
+  </div>
 
-<hr>
+  <br>
 
-      <h5>Прокомментировать</h5>
-      <%= form_for([@post, @post.comments.build]) do |f| %>
-        <% if user_signed_in? %>
-          <p>
-            Текст <br>
-            <%= f.text_area(:body, {:class => 'form-control'}) %>
-          </p>
+  <div class="alert alert-info">
+  <h4><center>Все комментарии<center></h4>
+  </div>
+  <hr>
 
-          <p>
-            <%= f.submit "Отправить", :class => 'btn btn-success' %>
-          </p>
+  <div>
+    <% @post.comments.each do |comment| %>
+      <p class="alert alert-info"><strong>
+        <% if comment.user_id? %>
+        <%= comment.user.email %>
         <% else %>
-          <p>
-            Пользователь<br>
-            <%= f.text_field(:username, {:class => 'form-control'}) %>
-          </p>
-          <p>
-            Текст <br>
-            <%= f.text_area(:body, {:class => 'form-control'}) %>
-          </p>
-
-          <p>
-            <%= f.submit "Отправить", :class => 'btn btn-success' %>
-          </p>
+        <%= comment.username %>
         <% end %>
-
-</div>
-
-
-<% end %>
+        :</strong>
+      <%= comment.body %>
+      </p>
+    <% end %>
+  </div>
+  <hr>
+  <div>
+    <h5>Прокомментировать</h5>
+    <%= render "comments/form" %>
+  </div>

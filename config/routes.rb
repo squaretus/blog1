@@ -13,7 +13,5 @@ Rails.application.routes.draw do
   root to: "posts#index", as: "home"
   resources :posts do
     resources :comments
-
-  resources :users
   end
 end

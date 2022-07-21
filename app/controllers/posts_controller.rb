@@ -7,12 +7,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id if current_user
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
