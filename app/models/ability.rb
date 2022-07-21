@@ -7,8 +7,9 @@ class Ability
   
   def initialize(user)
     can [:index, :show], Post
-    can [:index, :show, :create], Comment
+    can [:show, :create], Comment
     return unless user.present?
-    can [:update, :destroy, :create], :all, user_id: user.id
+    can [:update, :destroy], :all, user_id: user.id
+    can :create, :all
   end
 end
