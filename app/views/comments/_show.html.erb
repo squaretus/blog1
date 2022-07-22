@@ -1,0 +1,17 @@
+<div class="alert alert-info">
+<h4><center>Все комментарии<center></h4>
+</div>
+<div>
+  <% @post.comments.each do |comment| %>
+    <p class="alert alert-info"><strong>
+      <% if comment.user_id? %>
+        <%= comment.user.email %>
+      <% else %>
+        <%= comment.username %>
+      <% end %>
+        :</strong>
+    <%= comment.body %>
+    </p>
+  <% end %>
+</div>
+
