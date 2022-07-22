@@ -5,17 +5,22 @@
     <% end %>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <p>
+    Заголовок<br>
+    <%= form.text_field(:title, {:class => 'form-control'}) %>
+  </p>
+
+  <p>
+    Содержание <br>
+    <%= form.text_area(:body, {:class => 'form-control'}) %>
+  </p>
 
   <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+    <h4><%= form.label 'Картинка' %> <br></h4>
+    <%= form.file_field :pictures, multiple: true %>
   </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <br>
+  <p>
+    <%= form.submit"Сохранить", :class => 'btn btn-success' %>
+  </p>
 <% end %>

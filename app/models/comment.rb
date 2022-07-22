@@ -6,6 +6,6 @@ class Comment < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :post
 
-  validates :body, presence: true, length: {minimum: 5}
-  validates :username, presence: true, if: -> {user_id.blank?}
+  validates :body, presence: true, length: { minimum: 5 }
+  validates :username, presence: true, if: -> { user_id.blank? }
 end

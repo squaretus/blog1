@@ -1,43 +1,18 @@
 <%= render @post %>
 
-  <div>
-    <% if can? :update, @post %>
-      <% if can? :update, @post %>
-        <%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %><br>
-      <% end %>
-      <br />
-      <% if can? :destroy, @post %>
-        <%= button_to "Удалить пост", @post, method: :delete, :class => 'btn btn-danger' %>
-      <% end %>
-    <% end %>
-  </div>
-  <br>
-  <div>
-    <%= link_to "Назад ко всем постам", posts_path, :class => 'btn btn-secondary' %><br>
-  </div>
+<div>
+<% if can? :update, @post %>
+  <%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %><br>
+  <br/>
+  <%= button_to "Удалить пост", @post, method: :delete, :class => 'btn btn-danger' %>
+<% end %>
+</div>
+<br>
+<div>
+  <%= link_to "Назад ко всем постам", posts_path, :class => 'btn btn-secondary' %><br>
+</div>
+<br>
 
-  <br>
+<%= render 'comments/form' %>
 
-  <div class="alert alert-info">
-  <h4><center>Все комментарии<center></h4>
-  </div>
-  <hr>
 
-  <div>
-    <% @post.comments.each do |comment| %>
-      <p class="alert alert-info"><strong>
-        <% if comment.user_id? %>
-        <%= comment.user.email %>
-        <% else %>
-        <%= comment.username %>
-        <% end %>
-        :</strong>
-      <%= comment.body %>
-      </p>
-    <% end %>
-  </div>
-  <hr>
-  <div>
-    <h5>Прокомментировать</h5>
-    <%= render "comments/form" %>
-  </div>

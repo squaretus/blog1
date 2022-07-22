@@ -31,4 +31,7 @@ Rails.application.configure do
 
   config.active_support.disallowed_deprecation_warnings = []
 
+  # config.i18n.raise_on_missing_translations = true
+
+  # config.action_view.annotate_rendered_view_with_filenames = true
 end
