@@ -1,0 +1,28 @@
+<div>
+  <h5>Прокомментировать</h5>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <% if @comment&.errors&.any? %>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <div class="alert alert-warning"><%= msg %></div>
+    <% end %>
+  <% end %>
+    <% if user_signed_in? %>
+      <p>
+        Текст <br>
+        <%= f.text_area(:body, {:class => 'form-control'}) %>
+      </p>
+    <% else %>
+      <p>
+        Пользователь<br>
+        <%= f.text_field(:username, {:class => 'form-control'}) %>
+      </p>
+      <p>
+        Текст <br>
+        <%= f.text_area(:body, {:class => 'form-control'}) %>
+      </p>
+    <% end %>
+      <p>
+      <%= f.submit "Отправить", :class => 'btn btn-success' %>
+      </p>
+<% end %>
+</div>

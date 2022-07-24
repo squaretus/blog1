@@ -1,0 +1,30 @@
+<h2>Регистрация</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <br>Почта<br/>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    Пароль
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> символов минимум)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    Подтверждение пароля<br>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "Зарегистрироваться", :class => 'btn btn-warning' %>
+  </div>
+<br>
+<% end %>
+
+<%= render "devise/shared/links" %>

@@ -1,0 +1,13 @@
+<div id="<%= dom_id post %>">
+  <div class="alert alert-primary">
+    <center><h3><%= link_to post.title, post %></h3><center>
+
+    <p><%= post.body %></p>
+
+    <% post.pictures.each do |picture| %>
+      <%= link_to image_tag(picture, style:"width:900px; height:500px"), picture %>
+    <% end %>
+
+    <p><%= post.user.email %></p>
+  </div>
+</div>
