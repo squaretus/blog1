@@ -6,12 +6,12 @@ class Ability
   include CanCan::Ability
   
   def initialize(user)
-    can [:index, :show], Post
-    can [:show, :create], Comment
+    can %i[index show], Post
+    can %i[show create], Comment
     
     return if user.blank?
 
-    can [:update, :destroy], :all, user_id: user.id
+    can %i[update destroy], :all, user_id: user.id
     can :create, :all
   end
 end
